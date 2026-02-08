@@ -3,36 +3,278 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>わたしのWebページ</title>
+  <title>医療ライターのポートフォリオ</title>
+  <meta name="description" content="医療ライターの自己紹介と制作実績（サンプル）ページです。" />
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; line-height: 1.8; }
-    header { border-bottom: 1px solid #ddd; padding-bottom: 12px; margin-bottom: 20px; }
-    .card { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 12px 0; }
-    a { color: inherit; }
+    :root{
+      --bg:#0b1220;
+      --card:#111b2e;
+      --text:#eaf0ff;
+      --muted:#b7c4e3;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a7f3d0;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(125,211,252,.20), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(167,243,208,.15), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.8;
+    }
+    a{ color:inherit; text-decoration: none; border-bottom:1px dashed rgba(125,211,252,.6); }
+    a:hover{ border-bottom-style: solid; }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 28px 16px 60px; }
+    header{
+      padding: 24px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      backdrop-filter: blur(6px);
+    }
+    .top{
+      display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    h1{ margin: 8px 0 6px; font-size: 32px; line-height:1.2; }
+    .lead{ margin: 0; color: var(--muted); }
+    nav{
+      display:flex; gap: 10px; flex-wrap:wrap; margin-top: 14px;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size: 14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .card{
+      grid-column: span 12;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(17,27,46,.75);
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
+    @media (min-width: 860px){
+      .card.half{ grid-column: span 6; }
+      .card.third{ grid-column: span 4; }
+    }
+    h2{ margin:0 0 8px; font-size: 20px; }
+    h3{ margin:0 0 6px; font-size: 16px; color: var(--text); }
+    .muted{ color: var(--muted); }
+    ul{ padding-left: 18px; margin: 10px 0 0; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px; }
+    .tag{
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+    .btnrow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(125,211,252,.18), rgba(255,255,255,.03));
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.03);
+    }
+    .hr{ height:1px; background: var(--line); margin: 12px 0; }
+    footer{ margin-top: 18px; color: var(--muted); font-size: 13px; text-align:center; }
+    .small{ font-size: 13px; color: var(--muted); }
+    .kpi{ display:flex; gap:14px; flex-wrap:wrap; margin-top: 10px; }
+    .kpi > div{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      min-width: 160px;
+      background: rgba(255,255,255,.03);
+    }
+    .kpi strong{ font-size: 18px; display:block; }
+    .note{
+      border-left: 3px solid rgba(125,211,252,.8);
+      padding-left: 10px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>こんにちは！</h1>
-    <p>GitHub Pagesで公開する、はじめてのWebページです。</p>
-  </header>
+  <div class="wrap">
+    <!-- ヘッダー -->
+    <header>
+      <div class="top">
+        <div>
+          <div class="badge">🩺 医療ライター / Healthcare Writer</div>
+          <h1>あなたの名前（仮）｜ポートフォリオ</h1>
+          <p class="lead">医療・ヘルスケア領域の読みやすい文章を、正確さとやさしさの両立で制作します。</p>
+        </div>
+        <div class="btnrow">
+          <a class="btn" href="#portfolio">実績を見る</a>
+          <a class="btn secondary" href="#contact">連絡先</a>
+        </div>
+      </div>
 
-  <section class="card">
-    <h2>自己紹介</h2>
-    <p>ここに自己紹介を書きます。</p>
-  </section>
+      <nav>
+        <a class="pill" href="#about">自己紹介</a>
+        <a class="pill" href="#services">できること</a>
+        <a class="pill" href="#portfolio">ポートフォリオ</a>
+        <a class="pill" href="#writing">サンプル記事</a>
+        <a class="pill" href="#contact">お問い合わせ</a>
+      </nav>
+    </header>
 
-  <section class="card">
-    <h2>作りたいこと</h2>
-    <ul>
-      <li>医療ライティングの練習ページ</li>
-      <li>用語集</li>
-      <li>ポートフォリオ</li>
-    </ul>
-  </section>
+    <div class="grid">
+      <!-- 自己紹介 -->
+      <section id="about" class="card half">
+        <h2>自己紹介</h2>
+        <p class="muted">
+          はじめまして。医療・ヘルスケア領域のライティングを中心に活動しています。
+          読者の理解を助ける構成と、根拠に基づいた正確な表現を大切にしています。
+        </p>
 
-  <footer style="margin-top: 28px; color:#666;">
-    <small>© 2026 My Webpage</small>
-  </footer>
+        <div class="kpi">
+          <div>
+            <strong>得意領域</strong>
+            <span class="small">疾患解説 / 予防 / 生活習慣</span>
+          </div>
+          <div>
+            <strong>文章の方向性</strong>
+            <span class="small">専門→やさしく翻訳</span>
+          </div>
+          <div>
+            <strong>チェック</strong>
+            <span class="small">出典・禁忌表現・薬機法</span>
+          </div>
+        </div>
+
+        <p class="note">
+          ※ここは自由に書き換えてOK：経歴、資格、看護/薬学/研究経験、得意な読者層（患者向け/医療従事者向け）など。
+        </p>
+      </section>
+
+      <!-- できること -->
+      <section id="services" class="card half">
+        <h2>できること（Services）</h2>
+        <ul>
+          <li>医療・ヘルスケア記事（疾患解説、検査、治療、予防）</li>
+          <li>クリニック/病院サイト文章（診療案内、FAQ、コラム）</li>
+          <li>患者向け説明資料（わかりやすい言い換え）</li>
+          <li>監修者コメントを前提にした下書き作成</li>
+          <li>構成案、見出し設計、リライト、校正</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">やさしい言い換え</span>
+          <span class="tag">出典確認</span>
+          <span class="tag">構成設計</span>
+          <span class="tag">読みやすさ</span>
+        </div>
+        <div class="hr"></div>
+        <p class="small">対応形式：Google Docs / Word / Markdown（このページみたいな形式）など</p>
+      </section>
+
+      <!-- ポートフォリオ -->
+      <section id="portfolio" class="card">
+        <h2>ポートフォリオ（制作例）</h2>
+        <p class="muted">※リンクはダミーです。あとであなたの原稿・PDF・記事URLに差し替えできます。</p>
+
+        <div class="grid" style="margin-top:10px;">
+          <article class="card third">
+            <h3>疾患解説：高血圧の基礎</h3>
+            <p class="muted small">対象：一般読者｜文字数：2,000｜構成〜執筆</p>
+            <div class="tags">
+              <span class="tag">疾患</span><span class="tag">生活習慣</span><span class="tag">予防</span>
+            </div>
+            <div class="btnrow">
+              <a class="btn secondary" href="#">記事を見る（後でURL）</a>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>クリニックコラム：睡眠の質</h3>
+            <p class="muted small">対象：患者｜文字数：1,500｜リライト込み</p>
+            <div class="tags">
+              <span class="tag">睡眠</span><span class="tag">Q&A</span><span class="tag">やさしい</span>
+            </div>
+            <div class="btnrow">
+              <a class="btn secondary" href="#">記事を見る（後でURL）</a>
+            </div>
+          </article>
+
+          <article class="card third">
+            <h3>用語集：検査結果の見方</h3>
+            <p class="muted small">対象：一般｜形式：用語集｜構成・表現統一</p>
+            <div class="tags">
+              <span class="tag">検査</span><span class="tag">用語集</span><span class="tag">図表</span>
+            </div>
+            <div class="btnrow">
+              <a class="btn secondary" href="#">資料を見る（後でURL）</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- サンプル記事 -->
+      <section id="writing" class="card">
+        <h2>サンプル記事（このページ内）</h2>
+        <p class="muted">ここは“実績がまだ少ない”時でも強いです。短いサンプルを載せるだけで説得力が出ます。</p>
+
+        <h3>例：高血圧とは？（超短縮サンプル）</h3>
+        <p class="muted">
+          高血圧は、血管にかかる圧力が高い状態が続くことを指します。自覚症状が少ない一方で、
+          放置すると心臓や脳、腎臓に負担がかかることがあります。まずは血圧を測り、
+          生活習慣（塩分、運動、睡眠、ストレス）を見直すことが大切です。
+        </p>
+
+        <p class="small">
+          ※本番では、数値基準・リスク・受診目安などを、信頼できる出典に基づいて明記します。
+        </p>
+      </section>
+
+      <!-- 連絡先 -->
+      <section id="contact" class="card">
+        <h2>お問い合わせ</h2>
+        <p class="muted">SNSやメールなど、あなたの連絡手段に合わせて書き換えてください。</p>
+
+        <ul>
+          <li>Email：<a href="mailto:example@example.com">example@example.com</a></li>
+          <li>X（旧Twitter）：<a href="#">@your_account</a></li>
+          <li>GitHub：<a href="#">https://github.com/medicalwriterny</a></li>
+        </ul>
+
+        <p class="note">
+          ✅おすすめ：連絡先を公開したくない場合は「問い合わせフォーム（Googleフォームなど）」のURLだけ貼るのが安全です。
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <div>© 2026 Your Name. Built with GitHub Pages.</div>
+      <div class="small">更新したら、PagesのURLを再読み込みすると反映されます。</div>
+    </footer>
+  </div>
 </body>
 </html>
+
